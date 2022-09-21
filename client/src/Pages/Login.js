@@ -16,11 +16,11 @@ function Login(props) {
 
   const submitForm = async() => {
     let loginUser = await axios.post('/login', credentials)
-    if(loginUser.data.msg==="LOGGEDIN"){
-      navigate('/home')
-    }else{
-      alert(loginUser.data.msg)
-    }
+      if(loginUser.data.msg==="LOGGEDIN"){
+        navigate('/home')
+      }else{
+        alert(loginUser.data.msg)
+      }
   }
 
   return (

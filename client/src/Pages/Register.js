@@ -6,10 +6,8 @@ import Header from './Header'
 function Register() {
   let navigate = useNavigate()
 
-  const [state, setState] = useState({employee_name:'',employee_email:'',employee_password:''})
-
-  const {employee_name, employee_email, employee_password} = state
-
+  const [state,setState]= useState({employee_name:"", employee_email:"", employee_password:""})
+  const {employee_name,employee_email,employee_password} = state
   const handleChange = (e) => {
     setState({...state, [e.target.name]:e.target.value})
   }

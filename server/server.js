@@ -5,6 +5,11 @@ const Employee = require('./models/Employee')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { json } = require('express')
+const axios = require('axios')
+
+
+
+
 
 // Initialise APP
 const app = express()
@@ -101,6 +106,22 @@ app.post('/login', async(req,res)=>{
 
     
 
+})
+
+
+app.get('/getTweets',async(req,res)=>{
+    try {
+        const url = process.env.TWEET_API
+        const token = process.env.BEARER_TOKEN
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        
+        let response = await axios.get(url)
+        console.log(response.data)
+        res.status(200).json(response.data)
+    } catch (error) {
+        console.log(error.message)
+        res.status(503).json({msg:"SERVER ERROR"})
+    }
 })
 
 
